@@ -1,10 +1,14 @@
 // Physical device information for board and sensor
 #define DEVICE_ID "Feather HUZZAH ESP8266 WiFi"
-#define DHT_TYPE DHT22
+//#define DHT_TYPE DHT22
 
 // Pin layout configuration
 #define LED_PIN 0
-#define DHT_PIN 2
+//#define DHT_PIN 2
+#define BME_SCK 13
+#define BME_MISO 12
+#define BME_MOSI 11
+#define BME_CS 10
 
 #define TEMPERATURE_ALERT 30
 
