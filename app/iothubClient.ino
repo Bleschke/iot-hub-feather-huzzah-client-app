@@ -71,13 +71,13 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, char *buffer
 
 void start()
 {
-    Serial.println("Start sending temperature and humidity data.");
+    Serial.println("Start sending temperature, humidity, pressure, and altitude data.");
     messageSending = true;
 }
 
 void stop()
 {
-    Serial.println("Stop sending temperature and humidity data.");
+    Serial.println("Stop sending temperature, humidity, pressure, and altitude data.");
     messageSending = false;
 }
 
