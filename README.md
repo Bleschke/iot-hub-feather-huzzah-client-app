@@ -2,6 +2,7 @@
 services: iot-hub
 platforms: arduino
 author: xshi
+modified: Brian Leschke
 ---
 
 # IoT Hub Feather HUZZAH Client application 
@@ -27,16 +28,17 @@ Install the following libraries from `Sketch -> Include library -> Manage librar
 * `AzureIoTUtility`
 * `AzureIoTProtocol_MQTT`
 * `ArduinoJson`
-* `DHT sensor library`
+* ~~`DHT sensor library`~~
+* `Adafruit_BME280.h`
 * `Adafruit Unified Sensor`
 
 ## Connect your sensor with your board
-### Connect with a physical DHT22 sensor
-You can follow the image to connect your DHT22 with your feather HUZZAH ESP8266.
+### Connect with a physical ~~DHT22~~ BME280 sensor
+You can follow the image to connect your ~~DHT22~~ BME280 with your feather HUZZAH ESP8266.
 
 ![DHT22](https://docs.microsoft.com/en-us/azure/iot-hub/media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
 
-### DON'T HAVE A PHYSICAL DHT22?
+### DON'T HAVE A PHYSICAL ~~DHT22~~ BME280?
 You can use the application to simulate temperature&humidity data and send to your IoT hub.
 1. Open the `app/config.h` file.
 2. Change the `SIMULATED_DATA` value from `false` to `true`.
