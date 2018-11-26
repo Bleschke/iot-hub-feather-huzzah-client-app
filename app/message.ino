@@ -1,6 +1,17 @@
 #include <Adafruit_Sensor.h>
 #include <ArduinoJson.h>
-#include <DHT.h>
+#include <Adafruit_BME280.h>
+//#include <DHT.h>
+
+#define BME_SCK 13
+#define BME_MISO 12
+#define BME_MOSI 11
+#define BME_CS 10
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+
+Adafruit_BME280 bme; // I2C
+
 
 #if SIMULATED_DATA
 
@@ -17,6 +28,16 @@ float readTemperature()
 float readHumidity()
 {
     return random(30, 40);
+}
+
+float readPressure()
+{
+    return random(20, 30);
+}
+
+float readAltitude()
+{
+    return random(20, 30);
 }
 
 #else
@@ -37,12 +58,25 @@ float readHumidity()
     return dht.readHumidity();
 }
 
+float readPressure()
+{
+    return bme.readPressure();
+}
+
+float readAltitude()
+{
+    return bme.readAltitude(SEALEVELPRESSURE_HPA);
+}
+
+
 #endif
 
 bool readMessage(int messageId, char *payload)
 {
     float temperature = readTemperature();
     float humidity = readHumidity();
+    float pressure = readPressure();
+    float altitude = readAltitude();
     StaticJsonBuffer<MESSAGE_MAX_LEN> jsonBuffer;
     JsonObject &root = jsonBuffer.createObject();
     root["deviceId"] = DEVICE_ID;
@@ -70,6 +104,24 @@ bool readMessage(int messageId, char *payload)
     else
     {
         root["humidity"] = humidity;
+    }
+    
+    if (std::isnan(pressure))
+    {
+        root["pressure"] = NULL;
+    }
+    else
+    {
+        root["pressure"] = pressure;
+    }
+
+    if (std::isnan(altitude))
+    {
+        root["altitude"] = NULL;
+    }
+    else
+    {
+        root["altitude"] = altitude;
     }
     root.printTo(payload, MESSAGE_MAX_LEN);
     return temperatureAlert;
