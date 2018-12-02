@@ -10,7 +10,7 @@ modified: Brian Leschke
 
 > This repo contains the source code to help you get familiar with Azure IoT using the Azure IoT Adafruit Feather HUZZAH ESP8266 Starter Kit. You will find the [lesson-based tutorials on Azure.com](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started).
 
-This repo contains an arduino application that runs on board feather HUZZAH ESP8266 with a DHT22 temperature&humidity sensor, and then sends these data to your IoT hub. At the same time, this application receives Cloud-to-Device message from your IoT hub, and takes actions according to the C2D command. 
+This repo contains an arduino application that runs on board feather HUZZAH ESP8266 with a ~~DHT22~~ BME280 temperature&humidity sensor, and then sends these data to your IoT hub. At the same time, this application receives Cloud-to-Device message from your IoT hub, and takes actions according to the C2D command. 
 
 ## Create your Azure IoT hub
 Follow [this page](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started) to prepare your Azure IoT hub and register your device.
